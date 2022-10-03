@@ -18,9 +18,9 @@ export default function App() {
     return (
         <Screencontainer>
             <Header />
-            {deck.map((card, index) => <Cards key={index} numPerg={index} card={card} 
+            {deck.map((card, index) => <Cards key={index} data-identifier="flashcard" numPerg={index} card={card} 
             desabilitaCards={desabilitaCards} setDesabilitaCards={setDesabilitaCards} setDesabilitaBotoes={setDesabilitaBotoes}
-            conclusao={conclusao} setConclusao={setConclusao} indexCardAtual={indexCardAtual} setIndexCardAtual={setIndexCardAtual}
+            conclusao={conclusao} setIndexCardAtual={setIndexCardAtual}
             />)}
             <Footer desabilitaBotoes={desabilitaBotoes} setDesabilitaBotoes={setDesabilitaBotoes} conclusao={conclusao} setConclusao={setConclusao} setDesabilitaCards={setDesabilitaCards}
             indexCardAtual={indexCardAtual}

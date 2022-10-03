@@ -10,7 +10,7 @@ import deck from "../deck";
 
 export default function Cards(props) {
 
-    const { numPerg, desabilitaCards, setDesabilitaCards, setDesabilitaBotoes, conclusao, setConclusao, indexCardAtual, setIndexCardAtual } = props;
+    const { numPerg, desabilitaCards, setDesabilitaCards, setDesabilitaBotoes, conclusao, setIndexCardAtual } = props;
     const [estadoCard, setEstadoCard] = useState("fechada");
 
     function verificaCard() {
@@ -31,28 +31,28 @@ export default function Cards(props) {
 
     if (conclusao[numPerg] !== "") {
 
-        if (conclusao[numPerg] == "esqueci") {
+        if (conclusao[numPerg] === "esqueci") {
 
             return (
                 <PerguntaFechada>
                     <p style={{ color: "red", textDecoration: "line-through" }}>Pergunta  {numPerg + 1}</p>
-                    <img src={erro} alt="" />
+                    <img data-identifier="flashcard-status" src={erro} alt="" />
                 </PerguntaFechada>
             )
-        } else if (conclusao[numPerg] == "quase") {
+        } else if (conclusao[numPerg] === "quase") {
 
             return (
                 <PerguntaFechada>
                     <p style={{ color: "orange", textDecoration: "line-through" }}>Pergunta  {numPerg + 1}</p>
-                    <img src={quase} alt="" />
+                    <img data-identifier="flashcard-status" src={quase} alt="" />
                 </PerguntaFechada>
             )
-        } else if (conclusao[numPerg] == "zap") {
+        } else if (conclusao[numPerg] === "zap") {
 
             return (
                 <PerguntaFechada>
                     <p style={{ color: "green", textDecoration: "line-through" }}>Pergunta  {numPerg + 1}</p>
-                    <img src={zap} alt="" />
+                    <img data-identifier="flashcard-status" src={zap} alt="" />
                 </PerguntaFechada>
             )
         }
@@ -61,9 +61,9 @@ export default function Cards(props) {
     if (estadoCard === "fechada") {
 
         return (
-            <PerguntaFechada>
+            <PerguntaFechada data-identifier="flashcard-index-item">
                 <p>Pergunta  {numPerg + 1}</p>
-                <img src={play} alt="" onClick={verificaCard} />
+                <img data-identifier="flashcard-show-btn" src={play} alt="" onClick={verificaCard} />
             </PerguntaFechada>
         )
     }
@@ -71,16 +71,16 @@ export default function Cards(props) {
     else if (estadoCard === "pergunta") {
 
         return (
-            <PerguntaAberta>
+            <PerguntaAberta data-identifier="flashcard-question">
                 <p>{deck[numPerg].question}</p>
-                <img src={virar} alt="" onClick={habilitaResposta} />
+                <img data-identifier="flashcard-turn-btn" src={virar} alt="" onClick={habilitaResposta} />
             </PerguntaAberta>
         )
     }
 
     else {
         return (
-            <PerguntaAberta>
+            <PerguntaAberta data-identifier="flashcard-answer">
                 <p>{deck[numPerg].answer}</p>
             </PerguntaAberta>
         )

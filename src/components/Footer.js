@@ -41,11 +41,11 @@ export default function Footer(props) {
     return (
         <ContainerConcluidos>
             <ContainerBotoes>
-                <button disabled={desabilitaBotoes} onClick={naoLembra} style={{ backgroundColor: "red" }}>Não lembrei</button>
-                <button disabled={desabilitaBotoes} onClick={quaseLembra} style={{ backgroundColor: "#FF922E" }}>Quase não lembrei</button>
-                <button disabled={desabilitaBotoes} onClick={zap} style={{ backgroundColor: "#2FBE34" }}>Zap</button>
+                <button data-identifier="forgot-btn" disabled={desabilitaBotoes} onClick={naoLembra} style={{ backgroundColor: "red" }}>Não lembrei</button>
+                <button data-identifier="almost-forgot-btn" disabled={desabilitaBotoes} onClick={quaseLembra} style={{ backgroundColor: "#FF922E" }}>Quase não lembrei</button>
+                <button data-identifier="zap-btn" disabled={desabilitaBotoes} onClick={zap} style={{ backgroundColor: "#2FBE34" }}>Zap</button>
             </ContainerBotoes>
-            <Concluidos>
+            <Concluidos data-identifier="flashcard-counter">
                 {cardsConcluidos}/8 CONCLUÍDOS
             </Concluidos>
         </ContainerConcluidos>
