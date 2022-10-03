@@ -1,15 +1,42 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-export default function Footer() {
+export default function Footer(props) {
+
+    const {desabilitaBotoes, conclusao, setConclusao, setDesabilitaBotoes, setDesabilitaCards, indexCardAtual} = props;
+    const [cardsConcluidos, setCardsConcluidos] = useState(0)
+
+    function naoLembra() {
+        setDesabilitaBotoes(true)
+        setDesabilitaCards(false)
+        let atualizaConcluidos = (cardsConcluidos) + 1
+        setCardsConcluidos(atualizaConcluidos)
+    }
+
+    function quaseLembra() {
+        setDesabilitaBotoes(true)
+        setDesabilitaCards(false)
+        let atualizaConcluidos = cardsConcluidos + 1
+        setCardsConcluidos(atualizaConcluidos)
+    }
+
+    function zap() {
+        setDesabilitaBotoes(true)
+        setDesabilitaCards(false)
+        let atualizaConcluidos = cardsConcluidos + 1
+        setCardsConcluidos(atualizaConcluidos)
+    }
+
+
     return (
         <ContainerConcluidos>
             <ContainerBotoes>
-                <button style={{ backgroundColor: "red" }}>Não lembrei</button>
-                <button style={{ backgroundColor: "#FF922E" }}>Quase não lembrei</button>
-                <button style={{ backgroundColor: "#2FBE34" }}>Zap</button>
+                <button disabled={desabilitaBotoes} onClick={naoLembra} style={{ backgroundColor: "red" }}>Não lembrei</button>
+                <button disabled={desabilitaBotoes} onClick={quaseLembra} style={{ backgroundColor: "#FF922E" }}>Quase não lembrei</button>
+                <button disabled={desabilitaBotoes} onClick={zap} style={{ backgroundColor: "#2FBE34" }}>Zap</button>
             </ContainerBotoes>
             <Concluidos>
-                0/8 CONCLUÍDOS
+                {cardsConcluidos}/8 CONCLUÍDOS
             </Concluidos>
         </ContainerConcluidos>
     )

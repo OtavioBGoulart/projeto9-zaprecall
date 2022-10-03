@@ -7,14 +7,31 @@ import deck from "../deck";
 
 export default function Cards(props) {
 
+    const { numPerg, desabilitaCards, setDesabilitaCards, setDesabilitaBotoes, conclusao, setConclusao, indexCardAtual, setIndexCardAtual } = props;
     const [estadoCard, setEstadoCard] = useState("fechada");
+
+    function verificaCard() {
+
+        if (!desabilitaCards) {
+            setEstadoCard("pergunta");
+            setDesabilitaCards("true")
+            //setIndexCardAtual(numPerg + 1)
+        } else {
+            return
+        }
+    }
+
+    function habilitaResposta() {
+        setEstadoCard("resposta")
+        setDesabilitaBotoes(false);
+    }
 
     if (estadoCard === "fechada") {
 
         return (
             <PerguntaFechada>
-                 <p>Pergunta  {props.numPerg + 1}</p>
-                <img src={play} alt="" onClick={() => setEstadoCard("pergunta")}/>
+                <p>Pergunta  {numPerg + 1}</p>
+                <img src={play} alt="" onClick={verificaCard} />
             </PerguntaFechada>
         )
     }
@@ -23,19 +40,20 @@ export default function Cards(props) {
 
         return (
             <PerguntaAberta>
-                <p>{deck[props.numPerg].question}</p>
-                <img src={virar} alt="" onClick={() => setEstadoCard("resposta")}/>
+                <p>{deck[numPerg].question}</p>
+                <img src={virar} alt="" onClick={habilitaResposta} />
             </PerguntaAberta>
         )
-    }  
+    }
 
     else {
         return (
             <PerguntaAberta>
-                <p>{deck[props.numPerg].answer}</p>
+                <p>{deck[numPerg].answer}</p>
             </PerguntaAberta>
         )
     }
+
 }
 
 const PerguntaFechada = styled.div`
