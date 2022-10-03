@@ -7,10 +7,14 @@ export default function Footer(props) {
     const [cardsConcluidos, setCardsConcluidos] = useState(0)
 
     function naoLembra() {
+        console.log("esqueci")
         setDesabilitaBotoes(true)
         setDesabilitaCards(false)
         let atualizaConcluidos = (cardsConcluidos) + 1
-        setCardsConcluidos(atualizaConcluidos)
+        setCardsConcluidos(atualizaConcluidos);
+        const novoArrayConcluido = [...conclusao]
+        novoArrayConcluido[indexCardAtual] = "esqueci"
+        setConclusao(novoArrayConcluido)
     }
 
     function quaseLembra() {
@@ -18,6 +22,9 @@ export default function Footer(props) {
         setDesabilitaCards(false)
         let atualizaConcluidos = cardsConcluidos + 1
         setCardsConcluidos(atualizaConcluidos)
+        const novoArrayConcluido = [...conclusao]
+        novoArrayConcluido[indexCardAtual] = "quase"
+        setConclusao(novoArrayConcluido)
     }
 
     function zap() {
@@ -25,6 +32,9 @@ export default function Footer(props) {
         setDesabilitaCards(false)
         let atualizaConcluidos = cardsConcluidos + 1
         setCardsConcluidos(atualizaConcluidos)
+        const novoArrayConcluido = [...conclusao]
+        novoArrayConcluido[indexCardAtual] = "zap"
+        setConclusao(novoArrayConcluido)
     }
 
 

@@ -1,6 +1,9 @@
 import { useState } from "react"
 import play from "../assets/img/seta_play.png"
 import virar from "../assets/img/seta_virar.png"
+import erro from "../assets/img/icone_erro.png"
+import quase from "../assets/img/icone_quase.png"
+import zap from "../assets/img/icone_certo.png"
 //import ConteudoCard from "./ConteudoCard"
 import styled from "styled-components";
 import deck from "../deck";
@@ -15,7 +18,7 @@ export default function Cards(props) {
         if (!desabilitaCards) {
             setEstadoCard("pergunta");
             setDesabilitaCards("true")
-            //setIndexCardAtual(numPerg + 1)
+            setIndexCardAtual(numPerg);
         } else {
             return
         }
@@ -24,6 +27,35 @@ export default function Cards(props) {
     function habilitaResposta() {
         setEstadoCard("resposta")
         setDesabilitaBotoes(false);
+    }
+
+    if (conclusao[numPerg] !== "") {
+
+        if (conclusao[numPerg] == "esqueci") {
+
+            return (
+                <PerguntaFechada>
+                    <p style={{ color: "red", textDecoration: "line-through" }}>Pergunta  {numPerg + 1}</p>
+                    <img src={erro} alt="" />
+                </PerguntaFechada>
+            )
+        } else if (conclusao[numPerg] == "quase") {
+
+            return (
+                <PerguntaFechada>
+                    <p style={{ color: "orange", textDecoration: "line-through" }}>Pergunta  {numPerg + 1}</p>
+                    <img src={quase} alt="" />
+                </PerguntaFechada>
+            )
+        } else if (conclusao[numPerg] == "zap") {
+
+            return (
+                <PerguntaFechada>
+                    <p style={{ color: "green", textDecoration: "line-through" }}>Pergunta  {numPerg + 1}</p>
+                    <img src={zap} alt="" />
+                </PerguntaFechada>
+            )
+        }
     }
 
     if (estadoCard === "fechada") {

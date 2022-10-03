@@ -8,11 +8,12 @@ import { useState } from "react"
 
 
 export default function App() {
-    //const cardsConcluidos = deck.map(() => "")
-    const [indexCardAtual, setIndexCardAtual] = useState("")
+    const cardsConcluidos = deck.map(() => "");
+
+    const [indexCardAtual, setIndexCardAtual] = useState("");
     const [desabilitaCards, setDesabilitaCards] = useState(false);
     const [desabilitaBotoes, setDesabilitaBotoes] = useState(true);
-    const [conclusao, setConclusao] = useState("");
+    const [conclusao, setConclusao] = useState(cardsConcluidos);
 
     return (
         <Screencontainer>
@@ -21,7 +22,7 @@ export default function App() {
             desabilitaCards={desabilitaCards} setDesabilitaCards={setDesabilitaCards} setDesabilitaBotoes={setDesabilitaBotoes}
             conclusao={conclusao} setConclusao={setConclusao} indexCardAtual={indexCardAtual} setIndexCardAtual={setIndexCardAtual}
             />)}
-            <Footer desabilitaBotoes={desabilitaBotoes} setDesabilitaBotoes={setDesabilitaBotoes} setConclusao={setConclusao} setDesabilitaCards={setDesabilitaCards}
+            <Footer desabilitaBotoes={desabilitaBotoes} setDesabilitaBotoes={setDesabilitaBotoes} conclusao={conclusao} setConclusao={setConclusao} setDesabilitaCards={setDesabilitaCards}
             indexCardAtual={indexCardAtual}
             />
         </Screencontainer>
